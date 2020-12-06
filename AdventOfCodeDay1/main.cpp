@@ -11,7 +11,8 @@
 
 void addFileToArray(std::vector<int>&,std::ifstream&);
 
-int findAnswer(std::vector<int>&);
+int findAnswerForTwo(std::vector<int>&);
+int findAnswerForThree(std::vector<int>&);
 
 int main(int argc, const char * argv[]) {
 	std::ifstream in;
@@ -25,7 +26,8 @@ int main(int argc, const char * argv[]) {
 	std::vector<int> arr;
 	addFileToArray(arr, in);
 	
-	std::cout << "The answer is " << findAnswer(arr) << "\n";
+	std::cout << "The answer using two is " << findAnswerForTwo(arr) << "\n";
+	std::cout << "The answer using three is " << findAnswerForThree(arr) << "\n";
 	
 	
 
@@ -41,7 +43,7 @@ void addFileToArray(std::vector<int> &arr,std::ifstream &inputFile) {
 	
 }
 
-int findAnswer(std::vector<int>& arr) {
+int findAnswerForTwo(std::vector<int>& arr) {
 	
 	for (int i = 0; i <= arr.size(); ++i) {
 		for (int j = i + 1; j < arr.size(); ++j) {
@@ -53,3 +55,19 @@ int findAnswer(std::vector<int>& arr) {
 	
 	return 0;
 }
+
+int findAnswerForThree(std::vector<int>& arr) {
+	
+	for (int i = 0; i <= arr.size(); ++i) {
+		for (int j = i + 1; j < arr.size(); ++j) {
+			for (int k = j + 1; k < arr.size(); ++k) {
+				if (arr[i] + arr[j] + arr[k] == 2020) {
+					return arr[i] * arr[j] * arr[k];
+				}
+			}
+		}
+	}
+	
+	return 0;
+}
+
